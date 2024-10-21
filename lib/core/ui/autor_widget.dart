@@ -4,19 +4,20 @@ import 'package:flutter/material.dart';
 class AutorWidget extends StatelessWidget {
   final String title;
   final Widget content;
+  final String avatarUrl;
 
-  const AutorWidget({super.key, required this.title, required this.content});
+  const AutorWidget({super.key, required this.title, required this.content, required this.avatarUrl,});
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        const Column(
+        Column(
           children: [
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Expanded(
+                const Expanded(
                   flex: 6,
                   child: Divider(
                     thickness: 0.5,
@@ -24,9 +25,10 @@ class AutorWidget extends StatelessWidget {
                   ),
                 ),
                 VerifiedAvatar(
-                  imagePath: 'assets/images/diegoveloper.jpeg',
+                  imagePath: avatarUrl,
+                  // imagePath: 'assets/images/diegoveloper.jpeg',
                 ),
-                Expanded(
+                const Expanded(
                   flex: 1,
                   child: Divider(
                     thickness: 0.5,
@@ -35,7 +37,7 @@ class AutorWidget extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
             )
           ],

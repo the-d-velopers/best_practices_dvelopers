@@ -3,6 +3,9 @@ import 'package:best_practices_dvelopers/core/ui/autor_widget.dart';
 import 'package:best_practices_dvelopers/core/ui/tip_widget.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../core/ui/link_widget.dart';
+import '../../../../core/ui/paragraph_widget.dart';
+
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -15,84 +18,65 @@ class HomePage extends StatelessWidget {
       backgroundColor: AppPalette.primaryColor,
       appBar: AppBar(
         forceMaterialTransparency: true,
-        title: const Text('Tip page example'),
+        title: const Text('Unnecesary abstraction'),
       ),
-      body: const SingleChildScrollView(
+      body: SingleChildScrollView(
           child: Column(
         children: [
-          AutorWidget(
-            title: 'Diego Velásquez',
-            content: Text('Senior Software Engineer',
-                style: TextStyle(
-                    fontSize: 11.0,
-                    fontWeight: FontWeight.w300,
-                    color: AppPalette.secondaryColor)),
+          const AutorWidget(
+            avatarUrl: 'assets/images/wilsonveloper.jfif',
+            title: 'Wilson Toribio',
+            content: Text(
+              'Mid Software Engineer',
+              style: TextStyle(
+                fontSize: 11.0,
+                fontWeight: FontWeight.w300,
+                color: AppPalette.secondaryColor,
+              ),
+            ),
           ),
-          TipWidget(
-            title: 'Sección solo de texto',
+          const TipWidget(
+            title: 'Summary',
             content: Column(
               children: [
-                Text('Contenido 1'),
-                Text('Contenido 2'),
-                Text('Contenido 3'),
-                Text('Contenido 4'),
-                Text('Contenido 5'),
-                Text('Contenido 6'),
-                Text('Contenido 7'),
-                Text('Contenido 8'),
-                Text('Contenido 9'),
-                Text('Contenido 10'),
+                ParagraphWidget(
+                  content: 'Sometimes using Clean Architecture might make us think that we have to implement abstarct classes every where so we will end up with a lot of folders and files.',
+                ),
+                ParagraphWidget(
+                  content: 'Do the abstract classes as needed. If you are not sure that a class will need more than one implementation just do a normal class. Then depending on the need to have more than one implementation go and do it.',
+                ),
+                ParagraphWidget(
+                  content: 'The point of this is to make the development of the app simpler and to remove unnecesary folders and files, some projects tend to get a lot of abstract classes that will only have one implementation, and we do not want to overengineering a simple solution or feature.',
+                ),
               ],
             ),
           ),
           TipWidget(
-            title: 'Sección con imagen',
+            title: 'Images',
             content: Column(
               children: [
-                Text('Contenido 1'),
-                Text('Contenido 2'),
-                Text('Contenido 3'),
-                Text('Contenido 4'),
-                Text('Contenido 5'),
-                Text('Contenido 6'),
-                Text('Contenido 7'),
-                Text('Contenido 8'),
-                Text('Contenido 9'),
-                Text('Contenido 10'),
-              ],
-            ),
-          ),
-          TipWidget(
-            title: 'Sección con video',
-            content: Column(
-              children: [
-                Text('Contenido 1'),
-                Text('Contenido 2'),
-                Text('Contenido 3'),
-                Text('Contenido 4'),
-                Text('Contenido 5'),
-                Text('Contenido 6'),
-                Text('Contenido 7'),
-                Text('Contenido 8'),
-                Text('Contenido 9'),
-                Text('Contenido 10'),
-              ],
-            ),
-          ),
-          TipWidget(
-            title: 'Sección con referencias y links',
-            content: Column(
-              children: [
-                Text('Contenido 1'),
-                Text('Contenido 2'),
-                Text('Contenido 3'),
-                Text('Contenido 4'),
-                Text('Contenido 5'),
-                Text('Contenido 6'),
-                Text('Contenido 7'),
-                Text('Contenido 8'),
-                Text('Contenido 9'),
-                Text('Contenido 10'),
+                Container(
+                  height: 200,
+                  width: 300,
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: NetworkImage(
+                          'https://miro.medium.com/v2/resize:fit:720/format:webp/1*vUtSx8-gdvIreENjRcvt7w.png'),
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                ),
+                Container(
+                  height: 200,
+                  width: 300,
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: NetworkImage(
+                          'https://blog.ndepend.com/wp-content/uploads/SOLID-Principle-Dependency-Inversion-Principle.png'),
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
